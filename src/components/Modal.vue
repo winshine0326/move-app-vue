@@ -4,13 +4,19 @@
     <div class="inner">
       <h3>{{ data[selectedMovie].title }}</h3>
       <p>영화 상세정보</p>
-      <button @:click="isModal = false">닫기</button>
+      <button @:click="$emit('closeModal')">닫기</button>
+      <!-- $emit('이벤트명')으로 부모에게 이벤트 요청-->
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "ModalComponent",
+  props: {
+    selectedMovie: Number,
+    data: Array,
+    isModal: Boolean,
+  },
 };
 </script>
 <style lang=""></style>

@@ -25,13 +25,19 @@
       </p>
     </div>
   </div>
-  <!-- <Modal /> -->
+  <Modal
+    :selectedMovie="selectedMovie"
+    :data="data"
+    :isModal="isModal"
+    @closeModal="isModal = false"
+  />
+  <!-- emit 문법 -->
 </template>
 
 <script>
 import data from "./assets/movies";
 import NavBar from "./components/NavBar.vue";
-// import Modal from "./components/Modal.vue";
+import Modal from "./components/Modal.vue";
 import Event from "./components/Event.vue"; // 이벤트 박스
 
 console.log(data);
@@ -52,7 +58,7 @@ export default {
   },
   components: {
     NavBar: NavBar,
-    // Modal: Modal,
+    Modal: Modal,
     Event: Event,
   },
 };
