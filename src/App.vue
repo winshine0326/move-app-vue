@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { data } from "./assets/movies";
+import data from "./assets/movies";
 console.log(data);
 export default {
   name: "App",
