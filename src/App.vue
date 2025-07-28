@@ -12,7 +12,14 @@
       <button @:click="increseLike(i)">좋아용👍</button>
       <span>{{ item.like }}</span>
       <p>
-        <button @:click="isModal = true">상세보기</button>
+        <button
+          @:click="
+            isModal = true;
+            selectedMovie = i;
+          "
+        >
+          상세보기
+        </button>
       </p>
     </div>
   </div>
@@ -20,7 +27,7 @@
   <div class="modal" v-if="isModal">
     <!-- 아니 개편하네 if가 html 속성에 있어 -->
     <div class="inner">
-      <h3>Detail</h3>
+      <h3>{{ data[selectedMovie].title }}</h3>
       <p>영화 상세정보</p>
       <button @:click="isModal = false">닫기</button>
     </div>
@@ -36,6 +43,7 @@ export default {
     return {
       isModal: false,
       data,
+      selectedMovie: 0,
     };
   },
   methods: {
