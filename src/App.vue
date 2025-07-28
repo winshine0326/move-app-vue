@@ -11,6 +11,17 @@
       <p>장르 : {{ item.category }}</p>
       <button @:click="increseLike(i)">좋아용👍</button>
       <span>{{ item.like }}</span>
+      <p>
+        <button @:click="isModal = true">상세보기</button>
+      </p>
+    </div>
+  </div>
+
+  <div class="modal" v-if="isModal"> <!-- 아니 개편하네 if가 html 속성에 있어 -->
+    <div class="inner">
+      <h3>Detail</h3>
+      <p>영화 상세정보</p>
+      <button @:click="isModal = false">닫기</button>
     </div>
   </div>
 </template>
@@ -20,6 +31,7 @@ export default {
   name: "App",
   data() {
     return {
+      isModal: false,
       data: [
         {
           title: "노량",
@@ -73,6 +85,7 @@ p {
 }
 button {
   margin-right: 10px;
+  margin-top: 1rem;
 }
 .item {
   width: 100%;
@@ -90,5 +103,24 @@ button {
 }
 .item .info {
   width: 100%;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .inner {
+  background-color: #fff;
+  width: 80%;
+  padding: 20px;
+  border-radius: 10px;
 }
 </style>
