@@ -1,30 +1,19 @@
 <template>
   <NavBar />
   <Event :text="text" />
-  <h1>영화 정보</h1>
-  <div v-for="(item, i) in data" :key="i" class="item">
-    <figure>
-      <img :src="item.imgUrl" :alt="item.title" />
-    </figure>
-    <div class="info">
-      <h2 class="bg-yellow" :style="item.textRed">{{ item.title }}</h2>
-      <!-- 아니 속성값이 존재하지 않아도 에러가 나지 않는다고????? 혁신이다 -->
-      <p>개봉 : {{ item.year }}</p>
-      <p>장르 : {{ item.category }}</p>
-      <button @:click="increseLike(i)">좋아용👍</button>
-      <span>{{ item.like }}</span>
-      <p>
-        <button
-          @:click="
-            isModal = true;
-            selectedMovie = i;
-          "
-        >
-          상세보기
-        </button>
-      </p>
-    </div>
-  </div>
+
+  <Movies
+    :data="data"
+    :isModal="isModal"
+    :selectedMovie="selectedMovie"
+    @openModal="
+      isModal = true;
+      selectedMovie = $event;
+    "
+    @increseLike="increseLike($event)"
+  />
+  <!-- emit 파라미터를 받을 때는 $event -->
+
   <Modal
     :selectedMovie="selectedMovie"
     :data="data"
@@ -39,6 +28,7 @@ import data from "./assets/movies";
 import NavBar from "./components/NavBar.vue";
 import Modal from "./components/Modal.vue";
 import Event from "./components/Event.vue"; // 이벤트 박스
+import Movies from "./components/Movies.vue";
 
 console.log(data);
 export default {
@@ -60,6 +50,7 @@ export default {
     NavBar: NavBar,
     Modal: Modal,
     Event: Event,
+    Movies: Movies,
   },
 };
 </script>
