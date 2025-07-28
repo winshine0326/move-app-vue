@@ -17,7 +17,8 @@
     </div>
   </div>
 
-  <div class="modal" v-if="isModal"> <!-- 아니 개편하네 if가 html 속성에 있어 -->
+  <div class="modal" v-if="isModal">
+    <!-- 아니 개편하네 if가 html 속성에 있어 -->
     <div class="inner">
       <h3>Detail</h3>
       <p>영화 상세정보</p>
@@ -27,35 +28,14 @@
 </template>
 
 <script>
+import { data } from "./assets/movies";
+console.log(data);
 export default {
   name: "App",
   data() {
     return {
       isModal: false,
-      data: [
-        {
-          title: "노량",
-          year: 2025,
-          category: "액션, 드라마",
-          textRed: { color: "red" },
-          like: 0,
-          imgUrl: "./assets/노량.jpeg",
-        },
-        {
-          title: "아쿠아맨과 로스트 킹덤",
-          year: 2023,
-          category: "액션, 판타지, 어드벤처",
-          like: 0,
-          imgUrl: "./assets/아쿠아맨.webp",
-        },
-        {
-          title: "패배히로인이 너무 많아!",
-          year: 2024,
-          category: "러브코미디, 학원",
-          like: 0,
-          imgUrl: "./assets/패배히로인.jpeg",
-        },
-      ],
+      data,
     };
   },
   methods: {
