@@ -1,6 +1,7 @@
 <template>
   <NavBar />
   <Event :text="text" />
+  <SearchBar />
 
   <Movies
     :data="data"
@@ -29,6 +30,7 @@ import NavBar from "./components/NavBar.vue";
 import Modal from "./components/Modal.vue";
 import Event from "./components/Event.vue"; // 이벤트 박스
 import Movies from "./components/Movies.vue";
+import SearchBar from "./components/SearchBar.vue"; //검색창
 
 console.log(data);
 export default {
@@ -51,6 +53,7 @@ export default {
     Modal: Modal,
     Event: Event,
     Movies: Movies,
+    SearchBar: SearchBar,
   },
 };
 </script>
