@@ -2,7 +2,9 @@
   <NavBar />
   <Event :text="text" />
   <SearchBar :data="data_temp" @search_movie="searchMovie($event)" />
-
+  <p class="showAllBtn">
+    <button @click="showAllMovie()">전체보기</button>
+  </p>
   <Movies
     :data="data_temp"
     :isModal="isModal"
@@ -53,6 +55,9 @@ export default {
       this.data_temp = this.data.filter((movie) => {
         return movie.title.includes(title);
       });
+    },
+    showAllMovie() {
+      this.data_temp = this.data;
     },
   },
   components: {
@@ -121,5 +126,11 @@ button {
   width: 80%;
   padding: 20px;
   border-radius: 10px;
+}
+
+.showAllBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>
