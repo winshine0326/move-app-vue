@@ -3,7 +3,10 @@
     <input
       type="search"
       placeholder="검색어 입력"
-      @change="inputText = $event.target.value"
+      @change="
+        inputText = $event.target.value;
+        $event.target.value = '';
+      "
     />
     <!-- @input="inputText = $event.target.value" -->
     <!-- 사용자가 입력할 때 inputText에 추가-->
@@ -20,11 +23,19 @@ export default {
       inputText: "",
     };
   },
+  props: {
+    data: Array,
+  },
   watch: {
     // 검사할 변수명(변경값, 이전값[optional]) {로직}
     inputText(name) {
       //입력한 영화제목이 데이터에 있는지 확인
-      if (name !== "노량") {
+      const findName = this.data.filter((movie) => {
+        // 객체 안의 data는 앞에 this를 붙임
+        return movie.title.includes(name);
+      });
+      console.log(findName);
+      if (findName.length === 0) {
         alert("해당하는 영화가 없습니다");
       }
     },

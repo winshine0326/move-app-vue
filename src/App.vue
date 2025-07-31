@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <Event :text="text" />
-  <SearchBar />
+  <SearchBar :data="data" />
 
   <Movies
     :data="data"
