@@ -79,7 +79,7 @@ export default {
   mounted() {
     console.log("mounted");
     setInterval(() => {
-      this.eventTextNum = (this.eventTextNum + 1) % 3;
+      this.eventTextNum = (this.eventTextNum + 1) % this.text.length;
     }, 3000);
   },
 };
