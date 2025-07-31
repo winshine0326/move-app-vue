@@ -1,10 +1,10 @@
 <template>
   <NavBar />
   <Event :text="text" />
-  <SearchBar :data="data" />
+  <SearchBar :data="data_temp" @search_movie="searchMovie($event)" />
 
   <Movies
-    :data="data"
+    :data="data_temp"
     :isModal="isModal"
     :selectedMovie="selectedMovie"
     @openModal="
@@ -39,6 +39,7 @@ export default {
     return {
       isModal: false,
       data,
+      data_temp: [...data], //사본
       selectedMovie: 0,
       text: "와우ㅏ우ㅏ우ㅏ우ㅏ우",
     };
@@ -46,6 +47,12 @@ export default {
   methods: {
     increseLike(i) {
       this.data[i].like += 1;
+    },
+    searchMovie(title) {
+      // 영화제목이 포함된 데이터를 가져옴
+      this.data_temp = this.data.filter((movie) => {
+        return movie.title.includes(title);
+      });
     },
   },
   components: {

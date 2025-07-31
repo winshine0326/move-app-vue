@@ -5,6 +5,7 @@
       placeholder="검색어 입력"
       @change="
         inputText = $event.target.value;
+        $emit('search_movie', $event.target.value);
         $event.target.value = '';
       "
     />
@@ -18,6 +19,7 @@
 <script>
 export default {
   name: "SearchBarComponent",
+  emits: ["search_movie"],
   data() {
     return {
       inputText: "",
