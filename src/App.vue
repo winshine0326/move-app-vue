@@ -47,8 +47,12 @@ export default {
     };
   },
   methods: {
-    increseLike(i) {
-      this.data[i].like += 1;
+    increseLike(id) {
+      this.data.find((movie) => {
+        if (movie.id === id) {
+          movie.like += 1;
+        }
+      });
     },
     searchMovie(title) {
       // 영화제목이 포함된 데이터를 가져옴

@@ -1,7 +1,7 @@
 <template lang="">
   <div class="container">
     <h1>영화 정보</h1>
-    <div v-for="(item, i) in data" :key="i" class="item">
+    <div v-for="item in data" :key="item.id" class="item">
       <figure>
         <img :src="item.imgUrl" :alt="item.title" />
       </figure>
@@ -10,10 +10,10 @@
         <!-- 아니 속성값이 존재하지 않아도 에러가 나지 않는다고????? 혁신이다 -->
         <p>개봉 : {{ item.year }}</p>
         <p>장르 : {{ item.category }}</p>
-        <button @:click="$emit('increseLike', i)">좋아용👍</button>
+        <button @:click="$emit('increseLike', item.id)">좋아용👍</button>
         <span>{{ item.like }}</span>
         <p>
-          <button @:click="$emit('openModal', i)">상세보기</button>
+          <button @:click="$emit('openModal', item.id)">상세보기</button>
         </p>
       </div>
     </div>
