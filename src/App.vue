@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <Event :text="text" />
+  <Event :text="text[eventTextNum]" />
   <SearchBar :data="data_temp" @search_movie="searchMovie($event)" />
   <p class="showAllBtn">
     <button @click="showAllMovie()">전체보기</button>
@@ -43,7 +43,12 @@ export default {
       data,
       data_temp: [...data], //사본
       selectedMovie: 0,
-      text: "와우ㅏ우ㅏ우ㅏ우ㅏ우",
+      text: [
+        "애니메이션 캐릭터를 위한 온라인 추모공간 커뮤니티, 최애의 사인",
+        "디즈니 100주년 기념작, 위시",
+        "그날, 대한민국의 운명이 바뀌었다, 서울의 봄",
+      ],
+      eventTextNum: 0,
     };
   },
   methods: {
@@ -70,6 +75,12 @@ export default {
     Event: Event,
     Movies: Movies,
     SearchBar: SearchBar,
+  },
+  mounted() {
+    console.log("mounted");
+    setInterval(() => {
+      this.eventTextNum = (this.eventTextNum + 1) % 3;
+    }, 3000);
   },
 };
 </script>
